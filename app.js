@@ -6,40 +6,20 @@ class Character {
         this.npc = _npc;
     }
 
-    get _name() {
+    get getName() {
         return this.name;
     }
 
-    get _health() {
+    get getHealth() {
         return this.health;
     }
 
-    set _health(damage) {
+    set setHealth(damage) {
         this.health - damage;
     }
 
-    get _atkDamage() {
+    get getAtkDamage() {
         return this.atkDamage;
-    }
-
-    attack(char) {
-        while(this.health > 0 && char._health() > 0) {
-            char._health(this.atkDamage);
-
-            if(char._health() > 0) {
-                this._health(char._atkDamage());
-            }
-        }
-        let winner;
-        let loser;
-        if(char._health() > this.health) {
-            winner = char._name();
-            loser = this.name;
-        } else {
-            winner = this.name;
-            loser = char._name();
-        }
-        console.log(winner + ' has slain ' + loser);
     }
 }
 
@@ -58,6 +38,20 @@ class Player extends Character {
         this.inventory.push(item);
     }
 
+    
+    attack(char) {
+        let winner;
+        let loser;
+
+        if(this.atkDamage > char.getHealth) {
+            winner = this.name;
+            loser = char.getName;
+        } else {
+            winner = char.getName;
+            loser = this.name;
+        }
+        console.log(winner + ' has slain ' + loser);
+    }
 }
 
 class Enemy extends Character {
