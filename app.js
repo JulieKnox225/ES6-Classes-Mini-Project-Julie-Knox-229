@@ -26,13 +26,6 @@ class Player extends Character {
         this.inventory = [_startingItem];
     }
 
-    get inventory(){
-        return this.inventory;
-    }
-
-    set addItem(item) {
-        this.inventory.push(item);
-    }
 }
 
 class Enemy extends Character {
@@ -46,6 +39,7 @@ class Enemy extends Character {
 
 //Example of uses
 const villager = new Character('villager', 3, 0);
+
 
 const hero = new Player('Julie', 100, 100, 'healing potion');
 
